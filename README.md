@@ -1,8 +1,7 @@
 # Efficient Maximum s-bundle search via local vertex connectivity
 
-This repository implements the maximum s-bundle computation algorithm **SymBK_H** proposed in our paper. If you are using the code, please cite our paper.
+This repository implements the maximum *s*-bundle computation algorithm **SymBD** proposed in our paper. If you are using the code, please cite our paper.
 
-<!-- This repository is the same as https:XXX -->
 
 ## Compile the code
 
@@ -10,10 +9,10 @@ This repository implements the maximum s-bundle computation algorithm **SymBK_H*
 $ make clean
 $ make
 ```
-It generates an executable "SymBK_H", which corresponds to our SymBK_H algorithm.
+It generates an executable "SymBD", which corresponds to our SymBD algorithm.
 
 ## Get datasets
-The data used in our paper are mainly from the links below.
+The three datasets used in our paper can be found from the links below.
 
 1. 2nd DIMACS graphs collection: http://archive.dimacs.rutgers.edu/pub/challenge/graph/benchmarks/clique/
 
@@ -23,24 +22,25 @@ The data used in our paper are mainly from the links below.
 
 
 ## Data format
-Note that this program only accepts a **binary input data file** (with a .bin file extension). If the file does not end with `.bin`, you need to use the data format conversion function provided converter `translate.cpp` which is contained in the directory `data_transform_tool`.
+Our program only accepts a **binary input data file** (i.e., with a **.bin** file extension). If the data is not in binary form, you need to use our provided data transformation tool `translate.cpp` which is contained in the directory `data_transform_tool` to transform the data.
 
-Example for transform .mtx file to .bin file.
+We provide an example of converting a '.mtx' data file into binary format below. 
 
-    g++ -g -o translate translate.cpp
-    ./translate bio-celegans.mtx bio-celegans.bin
+    g++ -O3 -std=c++11 translate.cpp -o a.out -w
+    ./a.out bio-celegans.mtx bio-celegans.bin
 
 ## Run the code
+The usage procedure for our program is as follows.
 ```sh
-$ ./SymBK_H -g {path_to_graph} -s {s_value}
+$ ./SymBD -g {path_to_graph} -s {s_value}
 ```
 
-An example of computing the exact maximum 6-bundle for the graph bio-pdb1HYS.bin is as follows
+An example of computing the exact maximum 6-bundle for our provided example graph 'bio-pdb1HYS.bin' is as follows
 ```sh
-$ ./SymBK_H -g datasets/bio-pdb1HYS.bin -s 6
+$ ./SymBD -g datasets/bio-pdb1HYS.bin -s 6
 ```
 ## Result Analysis
-If you are using our provided example above, then you can see the following outputs (may be there are some slight differences):
+If you are using our provided example above, then you will see the following outputs (may be there are some slight differences):
 ```sh
 **** SymBK_H (Release) build at 16:11:27 Jul 11 2024 ***
 File: bio-pdb1HYS n= 36417 m= 2154174 s = 6
@@ -62,4 +62,20 @@ Branch_nodes: 518
 *** Search time: 75,990
 	Maximum 6-bundle Size: 63, Total Time: 1,362,248 (microseconds)
 ```
-From the aforementioned empirical results, **we can extract the following key information**: the detailed characteristics of the processed graph data file (File: bio-pdb1HYS n= 36417 m= 2154174), the size of the s-bundle obtained via the heuristic approach (Degeneracy s-bundle size: 58, 1-hop subgraph degen s-bundle size: 60, 2-hop-Degen sbundle size: 63), the time consumed by the preprocessing stage (The time for preprocessing is 1,286,236 (microseconds)), the number of branches generated (Branch_nodes: 518), the size of the maximum s-bundle (Maximum 6-bundle Size: 63), and the total runtime of the algorithm (Total Time: 1,362,248 (microseconds)).
+From the obtained empirical results, we can extract the following key information:
+
+- **Graph Data Characteristics:**
+  - **File Name**: `bio-pdb1HYS`
+  - **Vertices (n)**: 36,417
+  - **Edges (m)**: 2,154,174
+
+- **s-Bundle Sizes Obtained via Our Three-stage Heuristic Approach (The details can be found in Section 5.2 of our paper.):**
+  - **Stage 1: Degeneracy s-Bundle Size**: 58
+  - **Stage 2: 1-hop Subgraph Degen s-Bundle Size**: 60
+  - **Stage 3: 2-hop-Degen s-Bundle Size**: 63
+
+- **Performance Metrics:**
+  - **Preprocessing Time**: 1,286,236 microseconds
+  - **Branch Nodes Generated**: 518
+  - **Maximum 6-bundle Size**: 63
+  - **Total Runtime**: 1,362,248 microseconds
