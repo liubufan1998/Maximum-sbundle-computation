@@ -7,21 +7,17 @@ using namespace std;
 using namespace popl;
 
 void print_usage() {
-	printf("Example usage: ./SymBK_H -g path_to_graph -s 3\n");
+	printf("Example usage: ./SymBD -g path_to_graph -s 3\n");
 }
 
 int main(int argc, char *argv[])
 {
 #ifndef NDEBUG
-	printf("**** SymBK_H (Debug) build at %s %s ***\n", __TIME__, __DATE__);
+	printf("**** SymBD (Debug) build at %s %s ***\n", __TIME__, __DATE__);
 	printf("!!! You may want to define NDEBUG in Utility.h to get better performance!\n");
 #else
-	printf("**** SymBK_H (Release) build at %s %s ***\n", __TIME__, __DATE__);
+	printf("**** SymBD (Release) build at %s %s ***\n", __TIME__, __DATE__);
 #endif
-
-	bool output = false;
-	bool mode = false;
-	string alg;
 
 	OptionParser op("Allowed options");
 	auto help_option = op.add<Switch>("h", "help", "\'produce help message\'");
