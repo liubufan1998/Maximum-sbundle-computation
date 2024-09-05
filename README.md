@@ -1,4 +1,4 @@
-# Efficient Maximum s-bundle search via local vertex connectivity
+# Efficient Maximum s-bundle Search Via Local Vertex Connectivity
 
 This repository implements the maximum *s*-bundle computation algorithm **SymBD** proposed in our paper. If you are using the code, please cite our paper.
 
