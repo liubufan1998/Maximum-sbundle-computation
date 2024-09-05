@@ -76,6 +76,6 @@ From the obtained empirical results, we can extract the following key informatio
 
 - **Performance Metrics:**
   - **Preprocessing Time**: 1,286,236 microseconds
-  - **Branch Nodes Generated**: 518
+  - **Branches Generated**: 518
   - **Maximum 6-bundle Size**: 63
   - **Total Runtime**: 1,362,248 microseconds
