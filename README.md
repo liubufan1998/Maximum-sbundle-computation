@@ -24,7 +24,7 @@ The three datasets used in our paper can be found from the links below.
 ## Data format
 Our program only accepts a **binary input data file** (i.e., with a **.bin** file extension). If the data is not in binary form, you need to use our provided data transformation tool `translate.cpp` which is contained in the directory `data_transform_tool` to transform the data. Additionally, we have included an **original data file** `bio-celegans.mtx` within the same file directory, which can assist in understanding the native format of the graph data to be read.
 
-We provide an example of converting a '.mtx' data file into binary format below. 
+We provide an example of converting a '.mtx' data file into binary format below, processing approaches for other types of graph data formats are similar. 
 
     g++ -O3 -std=c++11 translate.cpp -o a.out -w
     ./a.out bio-celegans.mtx bio-celegans.bin
