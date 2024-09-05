@@ -1,12 +1,12 @@
 # ********   Author: Yang Liu    ******
-# ******** Email:  ******
+# ******** Email: 23b951003@stu.hit.edu.cn ******
 #
 CXX = g++
 CXXFLAGS = -std=c++11 -flto -O3
 INCLUDES = -I.
 SOURCES = main.cpp Graph.cpp sbundle_tool.cpp
 OBJECTS = $(SOURCES:.cpp=.o)
-EXECUTABLE = MSBP_SymBD_H
+EXECUTABLE = SymBD
 
 all: $(EXECUTABLE)
 
