@@ -29,6 +29,15 @@ We provide an example of converting a '.mtx' data file into binary format below,
     g++ -O3 -std=c++11 translate.cpp -o a.out -w
     ./a.out bio-celegans.mtx bio-celegans.bin
 
+Furthermore, to provide a clearer understanding of the data format prior to conversion to binary representation, we present a simple illustrative example as shown below (note that the two integers in the first line means **the number of vertices and edges**, respectively).
+
+    4 5
+    1 2
+    1 4
+    2 3
+    2 4
+    3 4
+    
 ## Run the code
 The usage procedure for our program is as follows.
 ```sh
