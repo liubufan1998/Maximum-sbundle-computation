@@ -126,7 +126,6 @@ void MaximumFlow::addedge(ui u, ui v, ui w)
     edge[tol].next = head[u];
     head[u] = tol++;
 
-
     edge[tol].from = v;
     edge[tol].to = u;
     edge[tol].cap = 0;
@@ -178,7 +177,6 @@ ui MaximumFlow::SAP(ui start, ui end, ui new_size)
         for (i = cur[u]; i != -1; i = edge[i].next)
             if (edge[i].cap != 0 && dep[u] == dep[edge[i].to] + 1)
                 break;
-
 
         if (i != -1)
         {
@@ -308,7 +306,6 @@ void MaximumFlow::get_local_vertexConnectivity(ui R_end, ui *SR, char *matrix, l
                     value[oID[real_minCut[k]]] = 1;
                 }
                 all_s_connected_new[key] = value;
-
             }
         }
     }
@@ -342,7 +339,6 @@ bool MaximumFlow::verify_SBundle_by_MaxFlowAlg0(ui *SR, ui R_end, char *matrix, 
         ui u = SR[i];
         mf.addedge(nV[u], nV[u] + new_size, 1);
     }
-
 
     for (ui i = 0; i < R_end; i++)
     {
@@ -896,7 +892,6 @@ void MaximumFlow::delete_vertices_based_on_lower_bound(ui *SR, ui S_end, ui R_en
         ui u = SR[i];
         mf.addedge(nV[u], nV[u] + new_size, 1);
     }
-
 
     for (ui i = 0; i < R_end; i++)
     {

@@ -1,6 +1,6 @@
 # Efficient Maximum s-bundle Search Via Local Vertex Connectivity
 
-This repository implements the maximum *s*-bundle computation algorithm **SymBD** proposed in our paper. If you are using the code, please cite our paper.
+This repository implements the maximum *s*-bundle computation algorithm **SymBD** proposed in our SIGMOD 2025 paper. If you are using the code, please cite our paper.
 
 
 ## Compile the code
@@ -9,10 +9,10 @@ This repository implements the maximum *s*-bundle computation algorithm **SymBD*
 $ make clean
 $ make
 ```
-It generates an executable "SymBD", which corresponds to our SymBD algorithm.
+It generates an executable program "SymBD", which corresponds to our SymBD algorithm (**Algorithm 3** in the paper).
 
 ## Get datasets
-The three datasets used in our paper can be found from the links below.
+The three dataset collections used in our paper can be downloaded from the links below.
 
 1. 2nd DIMACS graphs collection: http://archive.dimacs.rutgers.edu/pub/challenge/graph/benchmarks/clique/
 
@@ -24,12 +24,12 @@ The three datasets used in our paper can be found from the links below.
 ## Data format
 Our program only accepts a **binary input data file** (i.e., with a **.bin** file extension). If the data is not in binary form, you need to use our provided data transformation tool `translate.cpp` which is contained in the directory `data_transform_tool` to transform the data. Additionally, we have included an **original data file** `bio-celegans.mtx` within the same file directory, which can assist in understanding the native format of the graph data to be read.
 
-We provide an example of converting a '.mtx' data file into binary format below, and processing approaches for other types of graph data formats are similar. 
+We provide an example of converting a data file with a '.mtx' suffix into the binary data below. 
 
     g++ -O3 -std=c++11 translate.cpp -o a.out -w
     ./a.out bio-celegans.mtx bio-celegans.bin
 
-Furthermore, to provide a clearer understanding of the data format prior to conversion to binary representation, we present a simple illustrative example as shown below (note that the two integers in the first line means **the number of vertices and edges**, respectively).
+We remark that processing approaches for other types of graph data formats are similar. **If any issues related to data conversion arise during this process, please refer to the very simple and clear source code of our conversion function and make the necessary modifications.** Furthermore, to provide a clearer understanding of the data format prior to conversion to binary representation, we present a simple illustrative example as shown below (note that the two integers in the first line means **the number of vertices and edges**, respectively).
 
     4 5
     1 2
@@ -39,19 +39,19 @@ Furthermore, to provide a clearer understanding of the data format prior to conv
     3 4
     
 ## Run the code
-The usage procedure for our program is as follows.
+The usage procedure for the generated executable program is as follows.
 ```sh
 $ ./SymBD -g {path_to_graph} -s {s_value}
 ```
 
-An example of computing the exact maximum 6-bundle for our provided example graph 'bio-pdb1HYS.bin' is as follows
+To illustrate, an example of computing the exact maximum 6-bundle for our provided example graph 'bio-pdb1HYS.bin' is as follows
 ```sh
 $ ./SymBD -g datasets/bio-pdb1HYS.bin -s 6
 ```
 ## Result Analysis
 If you are using our provided example above, then you will see the following outputs (may be there are some slight differences):
 ```sh
-**** SymBK_H (Release) build at 16:11:27 Jul 11 2024 ***
+**** SymBD (Release) build at 16:11:27 Jul 11 2024 ***
 File: bio-pdb1HYS n= 36417 m= 2154174 s = 6
 Graph init ok
 Now we find a larger solution, and its size is 59
@@ -73,18 +73,20 @@ Branch_nodes: 518
 ```
 From the obtained empirical results, we can extract the following key information:
 
-- **Graph Data Characteristics:**
-  - **File Name**: `bio-pdb1HYS`
-  - **Vertices (n)**: 36,417
-  - **Edges (m)**: 2,154,174
+- Graph data characteristics:
+  - File Name: `bio-pdb1HYS`
+  - Vertices (n): 36,417
+  - Edges (m): 2,154,174
 
-- **s-Bundle Sizes Obtained via Our Three-stage Heuristic Approach (The details can be found in Section 5.2 of our paper.):**
-  - **Stage 1: Degeneracy s-Bundle Size**: 58
-  - **Stage 2: 1-hop Subgraph Degen s-Bundle Size**: 60
-  - **Stage 3: 2-hop-Degen s-Bundle Size**: 63
+- s-Bundle sizes bbtained via our three-stage heuristic approach (The details can be found in **Algorithm 4**, Section 5.2 of our paper.):
+  - Stage 1: Degeneracy s-Bundle Size: 58
+  - Stage 2: 1-hop Subgraph Degen s-Bundle Size: 60
+  - Stage 3: 2-hop-Degen s-Bundle Size: 63
 
-- **Performance Metrics:**
-  - **Preprocessing Time**: 1,286,236 microseconds
-  - **Branches Generated**: 518
-  - **Maximum 6-bundle Size**: 63
-  - **Total Runtime**: 1,362,248 microseconds
+- Performance metrics:
+  - Preprocessing time: 1,286,236 microseconds
+  - Generated branches: 518
+  - Maximum 6-bundle size: 63
+  - Total runtime: 1,362,248 microseconds
+
+Note: **if you encounter any issues throughout the process, please do not hesitate to contact us. My contact information is: ly17369279121@163.com.**

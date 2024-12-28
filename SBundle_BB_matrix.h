@@ -127,6 +127,7 @@ public:
 		level_id = new ui[n];
 	}
 
+	// 
 	void load_graph_heuristic(ui _n, const std::vector<std::pair<ui, ui>> &vp)
 	{
 		n = _n;
@@ -149,7 +150,7 @@ public:
 			degree[a]++;
 			degree[b]++;
 			if (matrix[a * n + b])
-				printf("Duplicate edge in KPLEX_BB_matrix.load_graph()\n");
+				printf("Duplicate edge in SBundle_BB_matrix.load_graph()\n");
 			matrix[a * n + b] = matrix[b * n + a] = 1;
 		}
 	}

@@ -6,7 +6,8 @@
 using namespace std;
 using namespace popl;
 
-void print_usage() {
+void print_usage()
+{
 	printf("Example usage: ./SymBD -g path_to_graph -s 3\n");
 }
 
@@ -26,35 +27,41 @@ int main(int argc, char *argv[])
 
 	op.parse(argc, argv);
 
-	if(help_option->is_set()||argc <= 1) {
+	if (help_option->is_set() || argc <= 1)
+	{
 		cout << op << endl;
-		if(argc <= 1) {
+		if (argc <= 1)
+		{
 			print_usage();
 			return 0;
 		}
 	}
-	if(!graph_option->is_set()) {
+
+	if (!graph_option->is_set())
+	{
 		printf("!!! The argument -g is required! Exit !!!\n");
 		print_usage();
 		return 0;
 	}
-	if(!s_option->is_set()) {
+
+	if (!s_option->is_set())
+	{
 		printf("!!! The argument -s is required! Exit !!!\n");
 		print_usage();
 		return 0;
 	}
 
 	Graph *graph = new Graph(graph_option->value().c_str(), s_option->value());
-    graph->read_binary_file();
+	graph->read_binary_file();
 
 #ifndef NDEBUG
 	printf("\t*** Finished reading graph\n");
 #endif
 
-	graph->MSBP_SymBD_H(); // For obtaining the exact maximum sbundle
+	graph->MSBP_SymBD_H(); // The core function for obtaining the exact maximum sbundle
 
 	delete graph;
 
 	printf("\n");
-	return 0;	
+	return 0;
 }
