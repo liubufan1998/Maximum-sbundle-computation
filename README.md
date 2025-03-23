@@ -89,4 +89,24 @@ From the obtained empirical results, we can extract the following key informatio
   - Maximum 6-bundle size: 63
   - Total runtime: 1,362,248 microseconds
 
+---
+We further provide a parallel version of the code for solving the maximum s-bundle problem, which is located in the ***parallel_version*** folder.
+
+ To compile the project, you should navigate to the folder and then use the following commands:
+
+```sh
+$ g++ -std=c++20 -O3 -fopenmp -o SymBD_parallel main.cpp Graph.cpp sbundle_tool.cpp
+```
+
+If you wish to run the project that you have just compiled, you can use the graph data '*ia-wiki-user-edits-page.bin*' that we provide in the folder. The usage procedure for the generated executable program is as follows.
+```sh
+$ ./SymBD_parallel {path_to_graph} {s_value} {num_of_threads}
+```
+
+To illustrate, the following is an example of parallel computation of the exact maximum 6-bundle for our provided example graph '*ia-wiki-user-edits-page.bin*' using 8 threads:
+
+```sh
+$ ./SymBD_parallel ia-wiki-user-edits-page.bin 6 8
+```
+
 Note: **if you encounter any issues throughout the process, please do not hesitate to contact us. My contact information is: ly17369279121@163.com.**
