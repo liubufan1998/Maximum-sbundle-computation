@@ -90,6 +90,8 @@ From the obtained empirical results, we can extract the following key informatio
   - Total runtime: 1,362,248 microseconds
 
 ---
+
+##  Parallel Version
 We further provide a parallel version of the code for solving the maximum s-bundle problem, which is located in the ***parallel_version*** folder.
 
  To compile the project, you should navigate to the folder and then use the following commands:
